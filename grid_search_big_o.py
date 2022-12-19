@@ -44,5 +44,5 @@ def get_inputs(n):
 
 
 if __name__ == "__main__":
-    best, others = big_o(grid_search, get_inputs, n_measures=100)
+    best, others = big_o(grid_search, get_inputs, n_measures=1000)
     print(best)
