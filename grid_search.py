@@ -4,9 +4,10 @@ import logging
 
 logging.getLogger().setLevel(logging.DEBUG)
 
+
 def grid_search(G, P):
     search = P[0][0]
-    found = "NO"
+    pattern_found = "NO"
     for i, grid_val in enumerate(G):
         j = str(grid_val).find(str(search))
         while j >= 0 and i + len(P) <= len(G) and j + len(P) <= len(grid_val):
@@ -19,13 +20,13 @@ def grid_search(G, P):
                     continue
                 break
             if counter == len(P):
-                found = "YES"
-                return found
+                pattern_found = "YES"
+                return pattern_found
             check = str(grid_val[j + 1:len(grid_val)]).find(str(search))
             if check < 0:
                 break
             j = j + check + 1
-    return found
+    return pattern_found
 
 
 if __name__ == "__main__":
@@ -36,7 +37,7 @@ if __name__ == "__main__":
         #      '781288']
         # P = ['12',
         #      '34']
-        G=_[0]
-        P=_[1]
-        found = grid_search(G, P )
+        G = _[0]
+        P = _[1]
+        found = grid_search(G, P)
         logging.info("found:%s" % found)
